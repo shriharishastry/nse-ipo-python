@@ -19,7 +19,7 @@ pip install -r requirements.txt
 import NseIPO
 
 api = NseIPO()
-api.login(member_id, loginId, pwd)
+api.Auth.login(member_id, loginId, pwd)
 ```
 
 ## Contributing
