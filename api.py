@@ -6,13 +6,15 @@ from urllib.parse import urlencode
 
 from connection import Connection
 
+from resources import Auth
+
 
 log = logging.getLogger("nse.api")
 
 
 class NseIPO(object):
     def __init__(self):
-        pass
+        self.connection = Connection()
 
     def __getattr__(self, item):
         return ResourceWrapper(item, self.connection)
