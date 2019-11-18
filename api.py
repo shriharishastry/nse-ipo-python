@@ -13,8 +13,9 @@ log = logging.getLogger("nse.api")
 
 
 class NseIPO(object):
-    def __init__(self):
-        self.connection = Connection()
+    def __init__(self, access_token=None):
+        self.access_token = access_token
+        self.connection = Connection(access_token)
 
     def __getattr__(self, item):
         return ResourceWrapper(item, self.connection)

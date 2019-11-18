@@ -5,12 +5,14 @@ from exceptions import ServerException, ClientRequestException, RedirectionExcep
 
 
 class Connection(object):
-    def __init__(self):
+    def __init__(self, access_token=None):
         self._session = requests.Session()
         self.base_url = "{base_url}{version}/{end_point}"
         self._session.headers = {
-            "Accept": "application/json"
+            "Accept": "application/json",
         }
+        if access_token:
+            self._session.headers['Authorization'] = "Bearer {}".format(access_token)
 
     def get_full_path(self, endpoint):
         return self.base_url.format(
